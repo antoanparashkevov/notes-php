@@ -28,4 +28,16 @@ function routeToController($uri, $routes) {
     }
 }
 
-routeToController($uri, $routes);
+//routeToController($uri, $routes);
+
+$dsn = 'mysql:host=localhost;post=3306;dbname=myblog;charset=utf8mb4';
+
+$pdo = new PDO($dsn, 'username', 'password');
+
+$statement = $pdo->prepare("select * from posts");
+
+$statement->execute();
+
+$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+dd($posts);
