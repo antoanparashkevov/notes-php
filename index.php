@@ -4,10 +4,15 @@ require('functions.php');
 
 //dd($_SERVER);
 
-$uri = $_SERVER['REQUEST_URI'];
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-if($uri === '/') {
-    require 'controllers/index.php';
-} else if ($uri === '/hero') {
-    require 'controllers/hero.php';
+//dd(parse_url($uri));
+
+$routes = array(
+    '/' => 'controllers/index.php',
+    '/hero' => 'controllers/hero.php'
+);
+
+if(array_key_exists($uri, $routes)) {
+    require $routes[$uri];
 }
