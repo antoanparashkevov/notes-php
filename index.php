@@ -6,7 +6,22 @@ require 'Database.php';
 
 //connect to MySQL database;
 
-$db = new Database();
+$config = require('config.php');
+
+/* config structure
+[
+    'database => [
+        'host' => 'localhost',
+        'port' => '3306',
+        'dbname' => 'myblog',
+        'charset' => 'utf8mb4'
+    ],
+    'username' => 'username',
+    'password' => 'password'
+]
+ * */
+
+$db = new Database($config['database'], $config['username'], $config['password']);
 
 $posts = $db->query("select * from posts")->fetchAll();
 
