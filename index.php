@@ -30,14 +30,24 @@ function routeToController($uri, $routes) {
 
 //routeToController($uri, $routes);
 
-$dsn = 'mysql:host=localhost;post=3306;dbname=myblog;charset=utf8mb4';
+//connect to MySQL database;
 
-$pdo = new PDO($dsn, 'username', 'password');
+class Database {
+    public function query() {
+        $dsn = 'mysql:host=localhost;post=3306;dbname=myblog;charset=utf8mb4';
 
-$statement = $pdo->prepare("select * from posts");
+        $pdo = new PDO($dsn, 'username', 'password');
 
-$statement->execute();
+        $statement = $pdo->prepare("select * from posts");
 
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+
+$db = new Database();
+
+$posts = $db->query();
 
 dd($posts);
