@@ -13,6 +13,19 @@ $routes = array(
     '/hero' => 'controllers/hero.php'
 );
 
-if(array_key_exists($uri, $routes)) {
-    require $routes[$uri];
+function abort($status_code = 404) {
+    http_response_code($status_code);
+    require "controllers/$status_code.php";
+
+    die();
 }
+
+function routeToController($uri, $routes) {
+    if(array_key_exists($uri, $routes)) {
+        require $routes[$uri];
+    } else {
+        abort();
+    }
+}
+
+routeToController($uri, $routes);
