@@ -1,7 +1,7 @@
-<?php require('./partials/root.php'); ?>
+<?php require('views/partials/body.php'); ?>
     <div class="bg-white">
     
-        <?php require('./partials/header.php'); ?>
+        <?php require('views/partials/header.php'); ?>
     
         <div class="relative isolate px-6 pt-14 lg:px-8">
             <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -38,4 +38,4 @@
         </div>
     </div>
 
-<?php require('./partials/footer.php'); ?>
+<?php require('views/partials/footer.php'); ?>
