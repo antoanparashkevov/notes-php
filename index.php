@@ -1,6 +1,7 @@
 <?php
 
-require('functions.php');
+require 'functions.php';
+require 'Database.php';
 
 //dd($_SERVER);
 
@@ -32,22 +33,8 @@ function routeToController($uri, $routes) {
 
 //connect to MySQL database;
 
-class Database {
-    public function query() {
-        $dsn = 'mysql:host=localhost;post=3306;dbname=myblog;charset=utf8mb4';
-
-        $pdo = new PDO($dsn, 'username', 'password');
-
-        $statement = $pdo->prepare("select * from posts");
-
-        $statement->execute();
-
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-}
-
 $db = new Database();
 
-$posts = $db->query();
+$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
 
 dd($posts);
