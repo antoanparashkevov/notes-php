@@ -16,6 +16,11 @@ require('views/partials/body.php'); ?>
                     <div class="text-center">
                         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Notes Section</h1>
                         <p class="mt-6 text-lg leading-8 text-gray-600">Notes section description</p>
+                        <ul>
+                            <?php foreach($notes as $note) : ?>
+                                <li><?= $note['body'] ?></li>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                 </div>
                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
