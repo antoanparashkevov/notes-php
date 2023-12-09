@@ -19,7 +19,7 @@ require('views/partials/body.php'); ?>
                         <p>
                             <?= $note['body'] ?>
                         </p>
-                        <a href="/notes" class="mt-10">Go back</a>
+                        <a href="/notes" class="mt-10 text-blue-500 underline">Go back</a>
                     </div>
                 </div>
                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
