@@ -1,7 +1,9 @@
-<?php require('views/partials/body.php'); ?>
+<?php
+require('views/partials/body.php'); ?>
 <div class="bg-white">
 
-    <?php require('views/partials/header.php'); ?>
+    <?php
+    require('views/partials/header.php'); ?>
 
     <div class="relative isolate px-6 pt-14 lg:px-8">
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -13,7 +15,7 @@
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                     Announcing our next round of funding. <a href="#" class="font-semibold text-indigo-600"><span
-                            class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
+                                class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
                 </div>
             </div>
             <div class="text-center">
@@ -27,4 +29,5 @@
         </div>
     </div>
 </div>
-<?php require('views/partials/footer.php'); ?>
+<?php
+require('views/partials/footer.php'); ?>

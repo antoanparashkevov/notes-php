@@ -9,6 +9,6 @@ function dd($value) {
     die();
 }
 
-function UriIsValid($uri) {
+function uriIsValid($uri) {
     return $_SERVER['REQUEST_URI'] === $uri;
 }
