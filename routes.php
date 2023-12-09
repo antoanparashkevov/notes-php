@@ -9,6 +9,7 @@ $routes = array(
     '/' => 'controllers/index.php',
     '/hero' => 'controllers/hero.php',
     '/notes' => 'controllers/notes.php',
+    '/note' => 'controllers/note.php'
 );
 
 function abort($status_code = 404) {

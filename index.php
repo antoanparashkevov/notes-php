@@ -6,7 +6,7 @@ require 'routes.php';
 
 //connect to MySQL database;
 
-$config = require('config.php');
+// $config = require('config.php');
 
 /* config structure
 [
@@ -21,8 +21,8 @@ $config = require('config.php');
 ]
  * */
 
-$db = new Database($config['database'], $config['username'], $config['password']);
+// $db = new Database($config['database'], $config['username'], $config['password']);
 
-$posts = $db->query("select * from posts")->fetchAll();
+// $posts = $db->query("select * from posts")->fetchAll();
 
 //dd($posts);

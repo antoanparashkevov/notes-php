@@ -3,10 +3,10 @@
 $config = require('config.php');
 $db = new Database($config['database'], $config['username'], $config['password']);
 
-$notes = $db->query('select * from notes where user_id = 1;')->fetchAll();
+$note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->fetch();
 
-// dd($notes);
+// dd($note);
 
 $page = "Note";
 
-require 'views/notes.view.php';
+require 'views/note.view.php';

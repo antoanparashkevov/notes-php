@@ -16,15 +16,10 @@ require('views/partials/body.php'); ?>
                     <div class="text-center">
                         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Notes Section</h1>
                         <p class="mt-6 text-lg leading-8 text-gray-600">Notes section description</p>
-                        <ul>
-                            <?php foreach($notes as $note) : ?>
-                                <li>
-                                    <a href="/note?id=<?=$note['id']?>" class="text-blue-500 hover:underline">
-                                        <?= $note['body'] ?>
-                                    </a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
+                        <p>
+                            <?= $note['body'] ?>
+                        </p>
+                        <a href="/notes" class="mt-10">Go back</a>
                     </div>
                 </div>
                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
