@@ -7,7 +7,8 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes = array(
     '/' => 'controllers/index.php',
-    '/hero' => 'controllers/hero.php'
+    '/hero' => 'controllers/hero.php',
+    '/notes' => 'controllers/notes.php',
 );
 
 function abort($status_code = 404) {
