@@ -2,6 +2,7 @@
 
 require 'functions.php';
 require 'Database.php';
+require 'Response.php';
 require 'routes.php';
 
 //connect to MySQL database;
