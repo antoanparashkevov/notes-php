@@ -9,6 +9,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $routes = array(
     '/' => 'controllers/index.php',
     '/notes' => 'controllers/notes.php',
+    '/auth' => 'controllers/auth.php',
     '/note' => 'controllers/note.php'
 );
 
