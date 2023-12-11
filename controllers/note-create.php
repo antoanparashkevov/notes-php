@@ -4,6 +4,7 @@ $currentUserId = 1;
 $errors = [];
 $page = "Create a Note";
 
+require('Validator.php');
 $config = require('config.php');
 $db = new Database($config['database'], $config['username'], $config['password']);
 
@@ -11,7 +12,9 @@ $db = new Database($config['database'], $config['username'], $config['password']
 
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
-    if(strlen($_POST['body']) === 0) {
+    $validator = new Validator();
+
+    if($validator->isEmpty($_POST['body'])) {
         $errors['body'] = 'A body is required';
     } else if(strlen($_POST['body']) >= 100) {
         $errors['body'] = 'A body should contain maximum of 100 characters and no more!';
