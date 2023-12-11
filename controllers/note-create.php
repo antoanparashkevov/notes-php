@@ -12,9 +12,8 @@ $db = new Database($config['database'], $config['username'], $config['password']
 
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
-    $validator = new Validator();
 
-    if(!$validator->string($_POST['body'], 1, 20)) {
+    if(!Validator::string($_POST['body'], 1, 20)) {
         $errors['body'] = 'A body of no more than 1100 characters is required!';
     }
 
