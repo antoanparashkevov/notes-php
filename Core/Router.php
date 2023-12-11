@@ -6,31 +6,24 @@ class Router
 {
     protected $routes = [];
 
+    protected function add($method, $uri, $controller ): void {
+        $this->routes[] = compact('method', 'uri', 'controller');
+    }
+
     public function get($uri, $controller): void
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'GET'
-        ];
+
+        $this->add('GET', $uri, $controller);
     }
 
     public function post($uri, $controller): void
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'post'
-        ];
+        $this->add('POST', $uri, $controller);
     }
 
     public function delete($uri, $controller): void
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'DELETE'
-        ];
+        $this->add('DELETE', $uri, $controller);
     }
 
     public function route($uri, $method)
