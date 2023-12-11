@@ -28,6 +28,7 @@
                         <a href="/notes" class="mt-10 text-blue-500 underline">Go back</a>
 
                         <form method="post" class="mt-4">
+                            <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="id" value="<?= $note['id']?>">
                             <button class="text-sm text-red-500 text-bold">Delete</button>
                         </form>
