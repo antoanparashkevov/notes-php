@@ -1,5 +1,7 @@
 <?php
 
+use Core\Router as Router;
+
 const BASE_PATH = __DIR__ . '/../';//root project folder
 
 //__DIR__ points to the absolute current working directory
@@ -13,7 +15,15 @@ spl_autoload_register(function ($class) {//automatically triggered by PHP when t
     require base_path("{$class}.php");
 });
 
-require base_path('Core/router.php');
+$router = new Router();
+
+require base_path('routes.php');//will populate the $routes variable inside the Router class
+
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+$method = $_SERVER['REQUEST_METHOD'];
+
+$router->route($uri, $method);
 
 // $config = require('config.php');
 
