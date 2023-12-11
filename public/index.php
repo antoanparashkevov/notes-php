@@ -4,14 +4,16 @@ const BASE_PATH = __DIR__ . '/../';//root project folder
 
 //__DIR__ points to the absolute current working directory
 
-require BASE_PATH . 'functions.php';
+require BASE_PATH . 'Core/functions.php';
 
 //only instantiate a class when I need it, when I'm trying to access it or make a new object's instance
 spl_autoload_register(function ($class) {//automatically triggered by PHP when trying to access a class
-    require base_path("Core/{$class}.php");
+    $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+
+    require base_path("{$class}.php");
 });
 
-require base_path('router.php');
+require base_path('Core/router.php');
 
 // $config = require('config.php');
 

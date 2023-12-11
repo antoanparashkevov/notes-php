@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class Validator
 {
     //pure function -> make them static

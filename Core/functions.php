@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function dd($value): void
 {
     echo "<pre>";
