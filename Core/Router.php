@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use JetBrains\PhpStorm\NoReturn;
+
 class Router
 {
     protected $routes = [];
@@ -36,7 +38,7 @@ class Router
         $this->abort();
     }
 
-    protected function abort($status_code = 404): void
+    #[NoReturn] protected function abort($status_code = 404): void
     {
         http_response_code($status_code);
 
