@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <meta name="description" content="My Personal Notes">
     <title>My notes</title>
 </head>
@@ -23,7 +23,7 @@
                         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Note Section</h1>
                         <p class="mt-6 text-lg leading-8 text-gray-600">Note section description</p>
                         <p>
-                            <?= $note['body'] ?>
+                            <?= htmlspecialchars($note['body']) ?>
                         </p>
                         <a href="/notes" class="mt-10 text-blue-500 underline">Go back</a>
                     </div>

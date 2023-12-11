@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <meta name="description" content="My Personal Notes">
     <title>My notes</title>
 </head>
@@ -26,7 +26,7 @@
                             <?php foreach($notes as $note) : ?>
                                 <li>
                                     <a href="/note?id=<?=$note['id']?>" class="text-blue-500 hover:underline">
-                                        <?= $note['body'] ?>
+                                        <?= htmlspecialchars($note['body']) ?>
                                     </a>
                                 </li>
                             <?php endforeach; ?>
