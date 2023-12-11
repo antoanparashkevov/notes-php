@@ -13,6 +13,8 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
     if(strlen($_POST['body']) === 0) {
         $errors['body'] = 'A body is required';
+    } else if(strlen($_POST['body']) >= 100) {
+        $errors['body'] = 'A body should contain maximum of 100 characters and no more!';
     }
 
     if(empty($errors)) {
