@@ -11,7 +11,7 @@
 </head>
     <body class="flex flex-col min-h-screen bg-white">
     <?php require('views/partials/header.php'); ?>
-        <main>
+    <main>
             <div class="relative isolate px-6 pt-14 lg:px-8">
                 <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                      aria-hidden="true">
@@ -20,20 +20,8 @@
                 </div>
                 <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
                     <div class="text-center">
-                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Notes Section</h1>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">Notes section description</p>
-                        <ul>
-                            <?php foreach($notes as $note) : ?>
-                                <li>
-                                    <a href="/note?id=<?=$note['id']?>" class="text-blue-500 hover:underline">
-                                        <?= $note['body'] ?>
-                                    </a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <p class="mt-6">
-                            <a href="/notes/create" class="text-blue-500 hover:underline">Create Note</a>
-                        </p>
+                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Create a Note Section</h1>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">Create a Note Section description</p>
                     </div>
                 </div>
                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
