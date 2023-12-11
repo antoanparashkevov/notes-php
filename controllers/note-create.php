@@ -14,10 +14,8 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
     $validator = new Validator();
 
-    if($validator->isEmpty($_POST['body'])) {
-        $errors['body'] = 'A body is required';
-    } else if(strlen($_POST['body']) >= 100) {
-        $errors['body'] = 'A body should contain maximum of 100 characters and no more!';
+    if(!$validator->string($_POST['body'], 1, 20)) {
+        $errors['body'] = 'A body of no more than 1100 characters is required!';
     }
 
     if(empty($errors)) {
