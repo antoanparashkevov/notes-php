@@ -26,6 +26,11 @@
                             <?= htmlspecialchars($note['body']) ?>
                         </p>
                         <a href="/notes" class="mt-10 text-blue-500 underline">Go back</a>
+
+                        <form method="post" class="mt-4">
+                            <input type="hidden" name="id" value="<?= $note['id']?>">
+                            <button class="text-sm text-red-500 text-bold">Delete</button>
+                        </form>
                     </div>
                 </div>
                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
