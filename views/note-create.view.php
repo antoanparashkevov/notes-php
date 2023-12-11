@@ -27,8 +27,14 @@
 
                         <div class="flex flex-col justify-center items-start">
                             <label for="body" class="font-bold text-xl">Note&apos;s body</label>
-                            <textarea name="body" id="body" cols="30" rows="10"></textarea>
+                            <textarea name="body" id="body" cols="30" rows="10" required></textarea>
                         </div>
+
+                        <?php if(isset($errors['body'])) : ?>
+
+                            <p class="font-bold"> <?= $errors['body'] ?> </p>
+
+                        <?php endif; ?>
 
                         <button type="submit">Submit</button>
                     </form>
