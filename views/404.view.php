@@ -10,7 +10,7 @@
     <title>Not Found</title>
 </head>
     <body class="flex flex-col min-h-screen bg-white">
-    <?php require('views/partials/header.php'); ?>
+    <?php view('partials/header.php'); ?>
     <main>
             <div class="relative isolate px-6 pt-14 lg:px-8">
                 <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -31,6 +31,6 @@
                 </div>
             </div>
         </main>
-    <?php require('views/partials/footer.php'); ?>
+    <?php view('partials/footer.php'); ?>
     </body>
 </html

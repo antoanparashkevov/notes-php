@@ -1,5 +1,5 @@
 <?php
 
-$page = "Auth";
-
-require 'views/auth.view.php';
+view('auth.view.php', [
+    'heading' => 'Auth'
+]);

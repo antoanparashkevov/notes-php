@@ -1,16 +1,17 @@
 <?php
 
 $currentUserId = 1;
-$page = "Note";
 
-$config = require('config.php');
+$config = require base_path('config.php');
 $db = new Database($config['database'], $config['username'], $config['password']);
 
 $note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->findOrFail();
-
 
 authorize($note && $note['user_id'] === $currentUserId);
 
 // dd($note);
 
-require 'views/notes/show.view.php';
+view('notes/show.view.php', [
+    'heading' => 'Individual Note',
+    'note' => $note
+]);

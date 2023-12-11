@@ -1,5 +1,5 @@
 <?php
 
-$page = "Forbidden! Unauthorized!";
-
-require 'views/403.view.php';
+view('403.view.php', [
+    'heading' => 'Unauthorized'
+]);
