@@ -31,6 +31,9 @@
                                 </li>
                             <?php endforeach; ?>
                         </ul>
+                        <p class="mt-6">
+                            <a href="" class="text-blue-500 hover:underline">Create Note</a>
+                        </p>
                     </div>
                 </div>
                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
