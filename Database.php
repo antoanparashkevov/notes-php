@@ -31,6 +31,10 @@ class Database
         return $this->statement->fetch();
     }
 
+    public function findAll() {
+        return $this->statement->fetchAll();
+    }
+
     public function findOrFail() {
         $data = $this->find();
 

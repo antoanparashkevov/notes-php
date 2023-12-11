@@ -12,3 +12,10 @@ function dd($value) {
 function uriIsValid($uri) {
     return $_SERVER['REQUEST_URI'] === $uri;
 }
+
+function authorize($condition, $status = Response::FORBIDDEN) {
+
+    if(!$condition) {
+        abort($status);
+    }
+}

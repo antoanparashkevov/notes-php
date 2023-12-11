@@ -8,9 +8,8 @@ $db = new Database($config['database'], $config['username'], $config['password']
 
 $note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->findOrFail();
 
-if( $note && $note['user_id'] !== $currentUserId ) {
-    abort(Response::FORBIDDEN);
-}
+
+authorize($note && $note['user_id'] === $currentUserId);
 
 // dd($note);
 
