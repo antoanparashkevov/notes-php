@@ -22,7 +22,7 @@
                 <div class="text-center">
                     <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Create a Note Section</h1>
                     <p class="mt-6 text-lg leading-8 text-gray-600">Create a Note Section description</p>
-                    <form method="post" class="flex flex-col gap-4 justify-center items-center mt-6">
+                    <form method="post" action="/notes" class="flex flex-col gap-4 justify-center items-center mt-6">
 
                         <div class="flex flex-col justify-center items-start">
                             <label for="body" class="font-bold text-xl">Note&apos;s body</label>
