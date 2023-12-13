@@ -15,6 +15,8 @@ spl_autoload_register(function ($class) {//automatically triggered by PHP when t
     require base_path("{$class}.php");
 });
 
+require base_path('bootstrap.php');
+
 $router = new Router();
 
 require base_path('routes.php');//will populate the $routes variable inside the Router class

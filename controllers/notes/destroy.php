@@ -1,11 +1,10 @@
 <?php
 
-use Core\Database;
+use Core\App;
 
 $currentUserId = 1;
 
-$config = require base_path('config.php');
-$db = new Database($config['database'], $config['username'], $config['password']);
+$db = App::container()->resolve('Core\Database');
 
 //delete the particular note from the database
 $note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->findOrFail();

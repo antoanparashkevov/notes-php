@@ -1,13 +1,12 @@
 <?php
 
 use Core\Validator;
-use Core\Database;
+use Core\App;
 
 $currentUserId = 1;
 $errors = [];
 
-$config = require base_path('config.php');
-$db = new Database($config['database'], $config['username'], $config['password']);
+$db = App::container()->resolve('Core\Database');
 
 if(!Validator::string($_POST['body'], 1, 20)) {
     $errors['body'] = 'A body of no more than 1100 characters is required!';
