@@ -19,7 +19,7 @@ if( !Validator::string($password) ) {
 }
 
 if( !empty($errors) ) {
-    view('login/create.view.php', [
+    view('session/create.view.php', [
         'errors' => $errors
     ]);
 }
@@ -38,7 +38,7 @@ if( $user ) {
     }
 }
 
-view('login/create.view.php', [
+view('session/create.view.php', [
     'errors' => [
         'email' => 'No matching account found for that email address and password.'
     ]

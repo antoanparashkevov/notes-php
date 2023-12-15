@@ -18,15 +18,26 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
             <a href="/" class="text-sm font-semibold leading-6 text-gray-900">Home</a>
-            <a href="/notes" class="text-sm font-semibold leading-6 text-gray-900">Notes</a>
+            <?php if($_SESSION['has_logged_in'] ?? false) : ?>
+                <a href="/notes" class="text-sm font-semibold leading-6 text-gray-900">Notes</a>
+            <?php endif; ?>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="/register" class="text-sm font-bold leading-6 text-gray-900 mr-4">
-                Register
-            </a>
-            <a href="/login" class="text-sm font-bold leading-6 text-gray-900">
-                Login
-            </a>
+            <?php if($_SESSION['has_logged_in'] ?? false) : ?>
+               <div>
+                    <form action="/session" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="text-black">Logout</button>
+                    </form>
+                </div>
+            <?php else : ?>
+                <a href="/register" class="text-sm font-bold leading-6 text-gray-900 mr-4">
+                    Register
+                </a>
+                <a href="/session" class="text-sm font-bold leading-6 text-gray-900">
+                    Login
+                </a>
+            <?php endif; ?>
         </div>
     </nav>
     <?= view('partials/banner.php') ?>
@@ -51,17 +62,28 @@
                         <a href="/" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                             Home
                         </a>
+                        <?php if($_SESSION['has_logged_in'] ?? false) : ?>
                         <a href="/notes" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                             Notes
                         </a>
+                        <?php endif; ?>
                     </div>
                     <div class="py-6">
-                        <a href="/register" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                            Register
-                        </a>
-                        <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                            Login
-                        </a>
+                        <?php if($_SESSION['has_logged_in'] ?? false) : ?>
+                            <div>
+                                <form action="/session" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="text-black font-bold">Logout</button>
+                                </form>
+                            </div>
+                        <?php else : ?>
+                            <a href="/register" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                Register
+                            </a>
+                            <a href="/session" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                Login
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
