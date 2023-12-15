@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use Core\Router as Router;
 
 const BASE_PATH = __DIR__ . '/../';//root project folder

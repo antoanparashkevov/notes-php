@@ -27,6 +27,7 @@
             </a>
         </div>
     </nav>
+    <?= view('partials/banner.php') ?>
     <!-- Mobile menu, show/hide based on menu open state. -->
     <div class="lg:hidden" role="dialog" aria-modal="true">
         <!-- Background backdrop, show/hide based on slide-over state. -->
