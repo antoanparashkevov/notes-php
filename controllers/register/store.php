@@ -3,6 +3,8 @@
 use Core\Validator;
 use Core\App;
 
+$db = App::resolve('Core\Database');
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -17,16 +19,14 @@ if( !Validator::string($password, 3, 255) ) {
 }
 
 if( !empty($errors) ) {
-    view('auth/create.view.php', [
+    view('register/create.view.php', [
         'errors' => $errors
     ]);
 }
 
-$db = App::resolve('Core\Database');
-
 $user = $db->query('select * from users where email = :email', [
     'email' => $email
-])->findAll();
+])->find();
 
 if( $user ) {
 
@@ -43,10 +43,7 @@ if( $user ) {
         'password' => password_hash($password, PASSWORD_BCRYPT)
     ]);
 
-    $_SESSION['has_logged_in'] = true;
-    $_SESSION['user'] = array(
-        'email' => $email
-    );
+    login($user);
 
     header('location: /');
     die();

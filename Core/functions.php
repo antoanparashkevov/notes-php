@@ -47,3 +47,10 @@ function view($view, $attributes = []): void
 
     require base_path('views/' . $view);
 }
+
+function login($user) {
+    $_SESSION['has_logged_in'] = true;
+    $_SESSION['user'] = [
+        'email' => $user['email']
+    ];
+}
