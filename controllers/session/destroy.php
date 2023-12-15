@@ -1,3 +1,6 @@
 <?php
 
-dd('logout');
+logout();
+
+header('location: /');
+die();
