@@ -2,7 +2,7 @@
 
 use Core\App;
 
-$db = App::container()->resolve('Core\Database');
+$db = App::resolve('Core\Database');
 
 $notes = $db->query('select * from notes where user_id = 1;')->findAll();
 

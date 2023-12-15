@@ -4,7 +4,7 @@ use Core\App;
 
 $currentUserId = 1;
 
-$db = App::container()->resolve('Core\Database');
+$db = App::resolve('Core\Database');
 
 //delete the particular note from the database
 $note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->findOrFail();

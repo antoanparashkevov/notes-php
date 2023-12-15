@@ -1,5 +1,5 @@
 <?php
 
-view('auth.view.php', [
+view('auth/create.view.php', [
     'heading' => 'Auth'
 ]);
