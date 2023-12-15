@@ -3,6 +3,7 @@
 namespace Core;
 
 use JetBrains\PhpStorm\NoReturn;
+use Core\Middleware\Middleware;
 
 class Router
 {
@@ -46,18 +47,10 @@ class Router
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
                 //apply the middleware
 
-                if( $route['middleware'] === 'guest' ) {
+                if($route['middleware']) {
+                   $middleware = Middleware::MAP[$route['middleware']];
 
-                    if( isset($_SESSION['user']) ) {
-                        header('location: /');
-                        die();
-                    }
-                } else if( $route['middleware'] === 'auth' ) {
-
-                    if( !isset($_SESSION['user']) ) {
-                        header('location: /');
-                        die();
-                    }
+                   (new $middleware)->handle();
                 }
 
                 return require base_path($route['controller']);
