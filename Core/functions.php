@@ -48,22 +48,7 @@ function view($view, $attributes = []): void
     require base_path('views/' . $view);
 }
 
-function login($user) {
-    $_SESSION['has_logged_in'] = true;
-    $_SESSION['user'] = [
-        'email' => $user['email']
-    ];
-
-    session_regenerate_id(true);
-}
-
-function logout() {
-
-    $_SESSION = [];
-    session_destroy();
-
-    $params = session_get_cookie_params();
-
-    //create a cookie that immediately expires since there is not a straightforward to clear the cookies
-    setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+function redirect($path): void {
+    header("location: {$path}");
+    die();
 }
