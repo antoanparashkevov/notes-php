@@ -21,10 +21,10 @@ view('partials/header.php'); ?>
         </div>
         <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div class="text-center">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Auth Section</h1>
-                <p class="mt-6 text-lg leading-8 text-gray-600">Auth section description</p>
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Login Section</h1>
+                <p class="mt-6 text-lg leading-8 text-gray-600">Login section description</p>
             </div>
-            <form action="/auth" method="post">
+            <form action="/login" method="post">
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
 
