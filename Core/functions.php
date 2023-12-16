@@ -1,5 +1,6 @@
 <?php
 
+use Core\Session;
 use Core\Response;
 use JetBrains\PhpStorm\NoReturn;
 
@@ -48,7 +49,14 @@ function view($view, $attributes = []): void
     require base_path('views/' . $view);
 }
 
-function redirect($path): void {
+function redirect($path): void
+{
+
     header("location: {$path}");
     die();
+}
+
+function old($key, $default = '')
+{
+   return Session::get('old')[$key] ?? $default;
 }
