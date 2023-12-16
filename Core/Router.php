@@ -9,7 +9,8 @@ class Router
 {
     protected $routes = [];
 
-    protected function add($method, $uri, $controller, $middleware = null ) {
+    protected function add($method, $uri, $controller, $middleware = null)
+    {
         $this->routes[] = compact('method', 'uri', 'controller', 'middleware');
 
         return $this;
@@ -31,7 +32,8 @@ class Router
         return $this->add('DELETE', $uri, $controller);
     }
 
-    public function only($key) {
+    public function only($key)
+    {
 
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
 
@@ -52,6 +54,11 @@ class Router
             }
         }
         $this->abort();
+    }
+
+    public function previousUrl()
+    {
+        return $_SERVER['HTTP_REFERER'];
     }
 
     #[NoReturn] protected function abort($status_code = 404): void

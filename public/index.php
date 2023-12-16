@@ -4,6 +4,7 @@ session_start();
 
 use Core\Session;
 use Core\Router as Router;
+use Core\ValidationException;
 
 const BASE_PATH = __DIR__ . '/../';//root project folder
 
@@ -28,7 +29,17 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
-$router->route($uri, $method);
+try {
+    $router->route($uri, $method);
+} catch (ValidationException $exception) {
+
+    Session::flash('errors', $exception->errors());
+    Session::flash('old', [
+        'email' => $exception->old()['email']
+    ]);
+
+    redirect($router->previousUrl());
+}
 
 //clear the errors if there are any
 Session::unflash();
