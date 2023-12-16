@@ -42,7 +42,8 @@ try {
 } catch (ValidationException $error) {
     Session::flash('errors', $error->errors());
     Session::flash('old', [
-        'email' => $error->old()['email']
+        'email' => $error->old()['email'],
+        'body' => $error->old()['body']
     ]);
 
     redirect($router->previousUrl());

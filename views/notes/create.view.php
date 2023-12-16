@@ -26,7 +26,7 @@
 
                         <div class="flex flex-col justify-center items-start">
                             <label for="body" class="font-bold text-xl">Note&apos;s body</label>
-                            <textarea name="body" id="body" cols="30" rows="10" required><?= $_POST['body'] ?? '' ?></textarea>
+                            <textarea name="body" id="body" cols="30" rows="10" required><?= old('body') ?></textarea>
                         </div>
 
                         <?php if(isset($errors['body'])) : ?>

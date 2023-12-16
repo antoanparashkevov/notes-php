@@ -1,30 +1,18 @@
 <?php
 
-use Core\Validator;
 use Core\App;
+use Core\Session;
+use Http\Forms\Note;
 
-$currentUserId = 1;
-$errors = [];
+$form = Note::validate($attributes = [
+    'body' => $_POST['body']
+]);
 
 $db = App::resolve('Core\Database');
 
-if(!Validator::string($_POST['body'], 1, 20)) {
-    $errors['body'] = 'A body of no more than 1100 characters is required!';
-}
+$db->query('INSERT INTO notes(body, user_id) VALUES(:body, :user_id)',[
+    'body' => $attributes['body'],
+    'user_id' => Session::get('user')['id']
+]);
 
-if(!empty($errors)) {
-    view('notes/create.view.php', [
-        'heading' => 'Create A Note',
-        'errors' => $errors
-    ]);
-
-} else {
-
-    $db->query('INSERT INTO notes(body, user_id) VALUES(:body, :user_id)',[
-        'body' => $_POST['body'],
-        'user_id' => 1
-    ]);
-
-    header('location: /notes');
-    die();
-}
+redirect('/notes');

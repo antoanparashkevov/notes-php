@@ -2,14 +2,11 @@
 
 use Core\App;
 
-$currentUserId = 1;
-
 $db = App::resolve('Core\Database');
 
-$note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->findOrFail();
-authorize($note && $note['user_id'] === $currentUserId);
-
-// dd($note);
+$note = $db->query('SELECT * FROM notes WHERE id=:id', [
+    'id' => $_GET['id']
+])->find();
 
 view('notes/show.view.php', [
     'heading' => 'Individual Note',

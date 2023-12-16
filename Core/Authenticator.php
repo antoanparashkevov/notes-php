@@ -38,12 +38,16 @@ class Authenticator
         ])->find();
 
         if( !$user ) {
-            $newUser = $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
+            $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
                 'email' => $email,
                 'password' => password_hash($password, PASSWORD_BCRYPT)
             ]);
 
-            $this->login(['email' => $email]);
+            $newUser = $db->query('SELECT * FROM users WHERE email = :email', [
+                'email' => $email
+            ])->find();
+
+            $this->login(['email' => $email, 'id' => $newUser['id']]);
 
             return true;
         }
@@ -55,6 +59,7 @@ class Authenticator
     {
         $_SESSION['has_logged_in'] = true;
         $_SESSION['user'] = [
+            'id' => $user['id'],
             'email' => $user['email']
         ];
 
