@@ -34,7 +34,7 @@
                 <a href="/register" class="text-sm font-bold leading-6 text-gray-900 mr-4">
                     Register
                 </a>
-                <a href="/session" class="text-sm font-bold leading-6 text-gray-900">
+                <a href="/login" class="text-sm font-bold leading-6 text-gray-900">
                     Login
                 </a>
             <?php endif; ?>
@@ -80,7 +80,7 @@
                             <a href="/register" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Register
                             </a>
-                            <a href="/session" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                            <a href="/login" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                                 Login
                             </a>
                         <?php endif; ?>

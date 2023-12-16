@@ -7,7 +7,7 @@ $currentUserId = 1;
 $db = App::resolve('Core\Database');
 
 //delete the particular note from the database
-$note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->findOrFail();
+$note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->find();
 
 authorize($note && $note['user_id'] === $currentUserId);
 

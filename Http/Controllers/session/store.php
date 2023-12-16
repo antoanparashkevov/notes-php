@@ -1,24 +1,19 @@
 <?php
 
-use Core\Session;
 use Core\Authenticator;
-use Core\ValidationException;
 use Http\Forms\Login;
 
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-$form = Login::validate([
-    'email' => $email,
-    'password' => $password
+$form = Login::validate($attributes = [
+    'email' => $_POST['email'],
+    'password' => $_POST['password']
 ]);
 
 $signIn = (new Authenticator)->attempt(
-    $email, $password
+    $attributes['email'], $attributes['password']
 );
 
 if (!$signIn) {
-    $form->error('email', 'No matching account found for that email address and password.')
+    $form->error('email', 'Incorrect email or password!')
         ->throw();
 }
 

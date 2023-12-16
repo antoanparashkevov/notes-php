@@ -2,19 +2,22 @@
 
 namespace Core;
 
-use Core\Session;
-
 class Authenticator
 {
 
     public function attempt($email, $password): bool {
-        $user = App::resolve(Database::class)->query('select * from users where email = :email', [
+
+        //Database::class returns the actual namespace: Core\Database;
+        $db = App::resolve(Database::class);
+
+        $user = $db->query('SELECT * FROM users WHERE email = :email', [
             'email' => $email
         ])->find();
 
         if( $user ) {
 
-            if(password_verify($password, $user['password'])) {
+            //check if the given password matches the given hash that is stored in the database
+            if( password_verify($password, $user['password']) ) {
                 $this->login($user);
 
                 return true;

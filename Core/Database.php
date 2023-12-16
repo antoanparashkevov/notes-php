@@ -14,13 +14,14 @@ class Database
     {
         
         $dsn = 'mysql:' . http_build_query($config, '', ';');
+
         $this->connection = new PDO($dsn, $username, $password, [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
 
     }
 
-    public function query($query, $params = [])
+    public function query($query, $params = []): Database
     {
 
         $this->statement = $this->connection->prepare($query);
@@ -31,20 +32,12 @@ class Database
     }
 
     public function find() {
+        //returns one match and no more
         return $this->statement->fetch();
     }
 
     public function findAll() {
+        //always returns an associative array no matter how many items are found
         return $this->statement->fetchAll();
-    }
-
-    public function findOrFail() {
-        $data = $this->find();
-
-        if( !$data ) {
-            abort();
-        }
-
-        return $data;
     }
 }

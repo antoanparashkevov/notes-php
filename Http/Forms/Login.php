@@ -9,6 +9,7 @@ class Login
 {
     protected $errors = [];
 
+    //a new way for declaring a variables inside the arguments list of a method
     public function __construct(public array $attributes)
     {
         //when we instantiate the Login class, we immediately instantiate any of the attributes that are relevant
@@ -25,12 +26,14 @@ class Login
     {
         $instance = new Login($attributes);//instantiate the class and the validation starts
 
-        return $instance->hasErrors() ? $instance->throw() : $instance;
+        return $instance->hasErrors() ? $instance->throw() : $instance;//we cannot return this since we ARE NOT in the object's context
 
     }
 
     public function throw(): ValidationException
     {
+        //$this->errors() returns all form errors
+        //$this->attributes() returns the old input fields
         ValidationException::throw($this->errors(), $this->attributes);
     }
 
@@ -40,7 +43,7 @@ class Login
         return count($this->errors);//returns a boolean that indicates whether the validation failed
     }
 
-    public function errors()
+    public function errors(): array
     {
         return $this->errors;
     }
@@ -49,6 +52,6 @@ class Login
     {
         $this->errors[$field] = $message;
 
-        return $this;
+        return $this;//we can return this since we ARE in the object's context
     }
 }

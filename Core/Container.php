@@ -4,7 +4,6 @@ namespace Core;
 
 class Container
 {
-
     protected $bindings = [];
 
     //add services to the container

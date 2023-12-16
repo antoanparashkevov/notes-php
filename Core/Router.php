@@ -11,28 +11,29 @@ class Router
 
     protected function add($method, $uri, $controller, $middleware = null)
     {
+        //compact() is the opposite of extract(). Takes as many arguments as we want and group them by creating an associative array that keys will be the arguments
         $this->routes[] = compact('method', 'uri', 'controller', 'middleware');
 
         return $this;
     }
 
-    public function get($uri, $controller)
+    public function get($uri, $controller): Router
     {
 
         return $this->add('GET', $uri, $controller);
     }
 
-    public function post($uri, $controller)
+    public function post($uri, $controller): Router
     {
         return $this->add('POST', $uri, $controller);
     }
 
-    public function delete($uri, $controller)
+    public function delete($uri, $controller): Router
     {
         return $this->add('DELETE', $uri, $controller);
     }
 
-    public function only($key)
+    public function only($key): Router
     {
 
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
@@ -40,34 +41,33 @@ class Router
         return $this;
     }
 
-    public function route($uri, $method)
+    public function route($uri, $method): mixed
     {
-        //dd($this->routes);
-        //dd($this->routes[0]);
-
         foreach ($this->routes as $route) {
+
+            //if it matches both the uri and the method, require the controller
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+
                 //apply the middleware
                 Middleware::resolve($route['middleware']);
 
                 return require base_path('Http/Controllers/' . $route['controller']);
             }
         }
-        $this->abort();
+        return $this->abort();
     }
 
-    public function previousUrl()
+    public function previousUrl(): string
     {
+        //this variable will point to the previous url. For ex: http://php.web/notes
         return $_SERVER['HTTP_REFERER'];
     }
 
-    #[NoReturn] protected function abort($status_code = 404): void
+    protected function abort($status_code = 404): mixed
     {
         http_response_code($status_code);
 
-        require base_path("controllers/$status_code.php");
-
-        die();
+        return require base_path("Http/Controllers/{$status_code}.php");
     }
 }
 

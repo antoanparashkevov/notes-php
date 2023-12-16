@@ -13,20 +13,6 @@ use JetBrains\PhpStorm\NoReturn;
     die();
 }
 
-function uriIsValid($uri): bool
-{
-    return $_SERVER['REQUEST_URI'] === $uri;
-}
-
-#[NoReturn] function abort($status_code = 404): void
-{
-    http_response_code($status_code);
-
-    require base_path("controllers/$status_code.php");
-
-    die();
-}
-
 function authorize($condition, $status = Response::FORBIDDEN): void
 {
     if (!$condition) {
@@ -49,7 +35,7 @@ function view($view, $attributes = []): void
     require base_path('views/' . $view);
 }
 
-function redirect($path): void
+#[NoReturn] function redirect($path): void
 {
 
     header("location: {$path}");
