@@ -27,9 +27,14 @@
                         </p>
                         <a href="/notes" class="mt-10 text-blue-500 underline">Go back</a>
 
+                        <a href="/note/edit?id=<?= $note['id'] ?>" class="text-sm text-blue-500 text-bold">Edit</a>
+
                         <form method="post" class="mt-4">
                             <input type="hidden" name="_method" value="DELETE">
+
+                            <!-- pass the id with a hidden input because we are actually sending a POST request and want to handle that id with the $_POST super global -->
                             <input type="hidden" name="id" value="<?= $note['id']?>">
+
                             <button class="text-sm text-red-500 text-bold">Delete</button>
                         </form>
                     </div>

@@ -33,6 +33,11 @@ class Router
         return $this->add('DELETE', $uri, $controller);
     }
 
+    public function patch($uri, $controller): Router
+    {
+        return $this->add('PATCH', $uri, $controller);
+    }
+
     public function only($key): Router
     {
 

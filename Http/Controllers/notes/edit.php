@@ -9,7 +9,10 @@ $note = $db->query('SELECT * FROM notes WHERE id=:id', [
     'id' => $_GET['id']
 ])->find();
 
-view('notes/show.view.php', [
-    'heading' => 'Individual Note',
+view('notes/edit.view.php', [
+    'heading' => 'Edit A Note',
     'note' => $note
 ]);
+
+
+
