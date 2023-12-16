@@ -15,7 +15,7 @@ class Middleware
             return;
         }
 
-        $middleware = static::MAP[$key] ?? false;
+        $middleware = Middleware::MAP[$key] ?? false;
 
         if(!$middleware) {
             throw new \Exception("No matching middleware found for key {$key}.");
