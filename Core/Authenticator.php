@@ -5,7 +5,8 @@ namespace Core;
 class Authenticator
 {
 
-    public function attempt($email, $password): bool {
+    public function loginAttempt($email, $password): bool
+    {
 
         //Database::class returns the actual namespace: Core\Database;
         $db = App::resolve(Database::class);
@@ -14,10 +15,10 @@ class Authenticator
             'email' => $email
         ])->find();
 
-        if( $user ) {
+        if ($user) {
 
             //check if the given password matches the given hash that is stored in the database
-            if( password_verify($password, $user['password']) ) {
+            if (password_verify($password, $user['password'])) {
                 $this->login($user);
 
                 return true;
@@ -27,7 +28,31 @@ class Authenticator
         return false;
     }
 
-    public function login($user): void {
+    public function registerAttempt($email, $password): bool
+    {
+
+        $db = App::resolve(Database::class);
+
+        $user = $db->query('SELECT * FROM users WHERE email = :email', [
+            'email' => $email
+        ])->find();
+
+        if( !$user ) {
+            $newUser = $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
+                'email' => $email,
+                'password' => password_hash($password, PASSWORD_BCRYPT)
+            ]);
+
+            $this->login(['email' => $email]);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public function login($user): void
+    {
         $_SESSION['has_logged_in'] = true;
         $_SESSION['user'] = [
             'email' => $user['email']
@@ -36,7 +61,8 @@ class Authenticator
         session_regenerate_id(true);
     }
 
-    public function logout(): void {
+    public function logout(): void
+    {
         Session::destroy();
     }
 

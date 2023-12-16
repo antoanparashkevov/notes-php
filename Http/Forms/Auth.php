@@ -5,7 +5,7 @@ namespace Http\Forms;
 use Core\ValidationException;
 use Core\Validator;
 
-class Login
+class Auth
 {
     protected $errors = [];
 
@@ -22,9 +22,9 @@ class Login
         }
     }
 
-    public static function validate($attributes): ValidationException | Login
+    public static function validate($attributes): ValidationException | Auth
     {
-        $instance = new Login($attributes);//instantiate the class and the validation starts
+        $instance = new Auth($attributes);//instantiate the class and the validation starts
 
         return $instance->hasErrors() ? $instance->throw() : $instance;//we cannot return this since we ARE NOT in the object's context
 
@@ -48,7 +48,7 @@ class Login
         return $this->errors;
     }
 
-    public function error($field, $message): Login
+    public function error($field, $message): Auth
     {
         $this->errors[$field] = $message;
 

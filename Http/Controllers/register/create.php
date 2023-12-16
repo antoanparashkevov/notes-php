@@ -1,5 +1,8 @@
 <?php
 
+use Core\Session;
+
 view('register/create.view.php', [
-    'heading' => 'Register'
+    'heading' => 'Register',
+    'errors' => Session::get('errors')
 ]);

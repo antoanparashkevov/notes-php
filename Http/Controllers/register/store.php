@@ -1,50 +1,20 @@
 <?php
 
-use Core\Validator;
-use Core\App;
+use Http\Forms\Auth;
+use Core\Authenticator;
 
-$db = App::resolve('Core\Database');
+$form = Auth::validate($attributes = [
+    'email' => $_POST['email'],
+    'password' => $_POST['password']
+]);
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+$signup = (new Authenticator)->registerAttempt(
+    $attributes['email'], $attributes['password']
+);
 
-$errors = [];
-if( !Validator::email($email) ) {
-    $errors['email'] = 'Please provide a valid email address!';
+if( !$signup ) {
+    $form->error('email', 'There is already created account with the given email address! Provide a different one!')
+        ->throw();
 }
 
-//255 is a common max for var char type in the db
-if( !Validator::string($password, 3, 255) ) {
-    $errors['password'] = 'Your password should be non-empty with at least 3 characters!';
-}
-
-if( !empty($errors) ) {
-    view('register/create.view.php', [
-        'errors' => $errors
-    ]);
-}
-
-$user = $db->query('select * from users where email = :email', [
-    'email' => $email
-])->find();
-
-if( $user ) {
-
-    $_SESSION['has_logged_in'] = true;
-    $_SESSION['user'] = array(
-        'email' => $email
-    );
-
-    header('location: /');
-    die();
-} else {
-    $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
-        'email' => $email,
-        'password' => password_hash($password, PASSWORD_BCRYPT)
-    ]);
-
-    login($user);
-
-    header('location: /');
-    die();
-}
+redirect('/');
