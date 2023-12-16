@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Core\Session;
+
 class Authenticator
 {
 
@@ -32,14 +34,7 @@ class Authenticator
     }
 
     public function logout(): void {
-
-        $_SESSION = [];
-        session_destroy();
-
-        $params = session_get_cookie_params();
-
-        //create a cookie that immediately expires since there is not a straightforward to clear the cookies
-        setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+        Session::destroy();
     }
 
 }

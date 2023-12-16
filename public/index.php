@@ -2,6 +2,7 @@
 
 session_start();
 
+use Core\Session;
 use Core\Router as Router;
 
 const BASE_PATH = __DIR__ . '/../';//root project folder
@@ -29,11 +30,5 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 $router->route($uri, $method);
 
-// $config = require('config.php');
-
-//connect to MySQL database;
-// $db = new Database($config['database'], $config['username'], $config['password']);
-
-// $posts = $db->query("select * from posts")->fetchAll();
-
-//dd($posts);
+//clear the errors if there are any
+Session::unflash();
