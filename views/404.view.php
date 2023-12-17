@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <meta name="description" content="My Personal Notes">
-    <title>Not Found</title>
+    <title>Notes | Not Found</title>
 </head>
     <body class="flex flex-col min-h-screen bg-white">
     <?php view('partials/header.php'); ?>

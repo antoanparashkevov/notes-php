@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <meta name="description" content="My Personal Notes">
-    <title>My notes</title>
+    <title>Notes | Main Page</title>
 </head>
     <body class="flex flex-col min-h-screen bg-white">
     <?php view('partials/header.php'); ?>
