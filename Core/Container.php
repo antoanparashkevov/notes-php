@@ -2,9 +2,10 @@
 
 namespace Core;
 
+//Service container that holds the services
 class Container
 {
-    protected $bindings = [];
+    protected array $bindings = [];
 
     //add services to the container
     public function bind($key, $resolver): void {

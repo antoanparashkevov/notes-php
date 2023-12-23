@@ -15,7 +15,7 @@ require BASE_PATH . 'Core/functions.php';
 
 //only instantiate a class when I need it, when I'm trying to access it or make a new object's instance
 spl_autoload_register(function ($class) {//automatically triggered by PHP when trying to access a class
-    $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+    $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);//replace \ with / since $class returns the namespace
 
     require base_path("{$class}.php");
 });
