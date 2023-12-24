@@ -4,13 +4,13 @@ namespace Core;
 
 class App
 {
-    protected static array $container;
+    protected static $container;
 
     public static function setContainer($container): void {
         static::$container = $container;
     }
 
-    public static function container(): array {
+    public static function container() {
         return static::$container;
     }
 
