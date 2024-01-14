@@ -1,4 +1,5 @@
 <?php
+//var_dump($_SESSION);//cannot access the super global because at this point of time, the session is not started.
 
 //start a new session that allows us to store some information about the current session inside the $_SESSION super global
 session_start();
