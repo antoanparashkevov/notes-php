@@ -2,6 +2,7 @@
 
 namespace Core;
 
+//We've built the container inside bootstrap.php. The purpose of this class is make it possible to access that container from anywhere in the application
 class App
 {
     protected static $container;
@@ -10,6 +11,7 @@ class App
         static::$container = $container;
     }
 
+    //getter method that gets the value stored in the $container
     public static function container() {
         return static::$container;
     }
