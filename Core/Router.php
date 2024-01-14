@@ -40,7 +40,7 @@ class Router
 
     public function only($key): Router
     {
-
+        //array_key_last() - returns the key of the last item
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
 
         return $this;
