@@ -19,24 +19,52 @@
                          style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
                 </div>
                 <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+
                     <div class="text-center">
-                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Note Section</h1>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">Note section description</p>
-                        <p>
+
+                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Note Details</h1>
+
+                        <p class="my-8 p-8 border border-blue-500 rounded-lg">
                             <?= htmlspecialchars($note['body']) ?>
                         </p>
-                        <a href="/notes" class="mt-10 text-blue-500 underline">Go back</a>
 
-                        <a href="/note/edit?id=<?= $note['id'] ?>" class="text-sm text-blue-500 text-bold">Edit</a>
+                        <div class="flex gap-x-4 items-center justify-center">
+                            <a
+                                href="/notes"
+                                class="
+                                    rounded-lg bg-blue-500 p-4 text-sm font-semibold text-white shadow-sm
+                                    hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+                                "
+                            >
+                                Go back
+                            </a>
 
-                        <form method="post" class="mt-4">
-                            <input type="hidden" name="_method" value="DELETE">
+                            <a
+                                href="/note/edit?id=<?= $note['id'] ?>"
+                                class="
+                                    rounded-lg bg-orange-500 p-4 text-sm font-semibold text-white shadow-sm
+                                    hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+                                "
+                            >
+                                Edit
+                            </a>
 
-                            <!-- pass the id with a hidden input because we are actually sending a POST request and want to handle that id with the $_POST super global -->
-                            <input type="hidden" name="id" value="<?= $note['id']?>">
+                            <form method="post">
+                                <input type="hidden" name="_method" value="DELETE">
 
-                            <button class="text-sm text-red-500 text-bold">Delete</button>
-                        </form>
+                                <!-- pass the id with a hidden input because we are actually sending a POST request and want to handle that id with the $_POST super global -->
+                                <input type="hidden" name="id" value="<?= $note['id']?>">
+
+                                <button
+                                    class="
+                                        rounded-lg bg-red-500 p-4 text-sm font-semibold text-white shadow-sm
+                                        hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+                                    "
+                                >
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"

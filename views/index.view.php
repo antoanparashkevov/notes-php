@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <meta name="description" content="My Personal Notes">
-    <title>Notes | Main Page</title>
+    <title>Notes | Home Page</title>
 </head>
     <body class="flex flex-col min-h-screen bg-white">
     <?php view('partials/header.php'); ?>
@@ -22,8 +22,28 @@
                 </div>
                 <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
                     <div class="text-center">
-                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Home Section</h1>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">Home section description</p>
+                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                            <?= isset($_SESSION['has_logged_in']) && isset($_SESSION['user']) ?
+                                "View your notes" :
+                                "Login to your account"
+                            ?>
+                        </h1>
+                        <p class="mt-6 text-lg leading-8 text-gray-600">
+                            <?= isset($_SESSION['has_logged_in']) && isset($_SESSION['user']) ?
+                                '<a 
+                                    href="/notes"
+                                    class="rounded-md bg-indigo-600 px-5 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                    Notes
+                                </a>' :
+                                '<a
+                                    href="/login"
+                                    class="rounded-md bg-indigo-600 px-5 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                    Login
+                                </a>'
+                            ?>
+                        </p>
                     </div>
                 </div>
                 <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"

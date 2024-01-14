@@ -19,23 +19,35 @@
                      style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
             </div>
             <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+
                 <div class="text-center">
-                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Create a Note Section</h1>
-                    <p class="mt-6 text-lg leading-8 text-gray-600">Create a Note Section description</p>
+
+                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Create a note</h1>
+
                     <form method="post" action="/notes" class="flex flex-col gap-4 justify-center items-center mt-6">
 
-                        <div class="flex flex-col justify-center items-start">
-                            <label for="body" class="font-bold text-xl">Note&apos;s body</label>
-                            <textarea name="body" id="body" cols="30" rows="10" required><?= old('body') ?></textarea>
-                        </div>
+                        <textarea
+                            class="border border-blue-500 rounded-lg focus:border-blue-700 resize-none"
+                            name="body"
+                            id="body"
+                            cols="30"
+                            rows="10"
+                            required
+                        ><?= htmlspecialchars(old('body')) ?></textarea>
 
                         <?php if(isset($errors['body'])) : ?>
-
                             <p class="text-red-500 text-xs font-bold"> <?= $errors['body'] ?> </p>
-
                         <?php endif; ?>
 
-                        <button type="submit">Submit</button>
+                        <button
+                            type="submit"
+                            class="
+                                rounded-lg bg-green-500 p-4 text-sm font-semibold text-white shadow-sm
+                                hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+                            "
+                        >
+                            Create
+                        </button>
                     </form>
                 </div>
             </div>

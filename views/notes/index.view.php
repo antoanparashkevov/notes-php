@@ -20,19 +20,29 @@
                 </div>
                 <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
                     <div class="text-center">
-                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Notes Section</h1>
-                        <p class="mt-6 text-lg leading-8 text-gray-600">Notes section description</p>
-                        <ul>
+                        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">All notes</h1>
+                        <ul class="my-7">
                             <?php foreach($notes as $note) : ?>
-                                <li>
-                                    <a href="/note?id=<?=$note['id']?>" class="text-blue-500 hover:underline">
+                                <li class="border border-blue-500 my-4 rounded-lg hover:shadow-md">
+                                    <a
+                                        href="/note?id=<?=$note['id']?>"
+                                        class="block w-full h-full p-2 text-xl text-black-500"
+                                    >
                                         <?= htmlspecialchars($note['body']) ?>
                                     </a>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
                         <p class="mt-6">
-                            <a href="/notes/create" class="text-blue-500 hover:underline">Create Note</a>
+                            <a
+                                href="/notes/create"
+                                class="
+                                    rounded-lg bg-green-600 p-4 text-sm font-semibold text-white shadow-sm
+                                    hover:bg-green-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+                                "
+                            >
+                                Create a note
+                            </a>
                         </p>
                     </div>
                 </div>
