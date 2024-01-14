@@ -39,7 +39,7 @@ function view($view, $attributes = []): void
 {
 
     header("location: {$path}");
-    die();
+    die();//kill the script to ensure there is no scenario where the script continues being executed after the redirecting
 }
 
 function old($key, $default = '')

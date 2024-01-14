@@ -57,6 +57,7 @@ class Authenticator
 
     public function login($user): void
     {
+        //put user data into the session
         $_SESSION['has_logged_in'] = true;
         $_SESSION['user'] = [
             'id' => $user['id'],
